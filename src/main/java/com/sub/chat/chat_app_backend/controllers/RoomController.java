@@ -34,7 +34,7 @@ public class RoomController {
         else{
             // nhi hai matlab create krna padega room
              Room room=new Room();
-             room.setRoomID(roomId);
+             room.setRoomId(roomId);
              roomRepository.save(room);
              Room savedRooms=roomRepository.save(room);
              return ResponseEntity.status(HttpStatus.CREATED).body(room);
@@ -44,11 +44,11 @@ public class RoomController {
 
 
     // get room: i mean which room do you want to join
-    @GetMapping("'{roomId}")
-    public ResponseEntity<?> joinRoom(@PathVariable String id){
+    @GetMapping("/{roomId}")
+    public ResponseEntity<?> joinRoom(@PathVariable String roomId){
         // agar room hai to we can join
         // otherwise we cant
-        Room room=roomRepository.findByRoomId(id);
+        Room room=roomRepository.findByRoomId(roomId);
         if (room==null){
             return ResponseEntity.badRequest().body("Room does not exist");
         }
@@ -77,9 +77,6 @@ public class RoomController {
         return ResponseEntity.ok(paginatedMessages);
 
     }
-
-
-
 
 
 }

@@ -20,7 +20,7 @@ import java.util.List;
 public class Room {
     @Id
     private String id;  // mongo db: primary key matlab
-    private String roomID;
+    private String roomId;
     private List<Message>messages=new ArrayList<>();
 
 
