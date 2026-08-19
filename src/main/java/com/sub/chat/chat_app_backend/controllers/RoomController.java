@@ -28,7 +28,8 @@ public class RoomController {
         if (roomRepository.findByRoomId(roomId)!=null){
             // room is already there
             return ResponseEntity.badRequest().body("Room already exist");
-        } else{
+        }
+        else{
             // nhi hai matlab create krna padega room
              Room room=new Room();
              room.setRoomID(roomId);
