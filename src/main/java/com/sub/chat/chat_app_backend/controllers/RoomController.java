@@ -1,19 +1,15 @@
 package com.sub.chat.chat_app_backend.controllers;
-
-
 import com.sub.chat.chat_app_backend.entities.Message;
 import com.sub.chat.chat_app_backend.entities.Room;
 import com.sub.chat.chat_app_backend.repositories.RoomRepository;
-import lombok.ToString;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/rooms")
+@CrossOrigin("http://localhost:3000")
 public class RoomController {
 
     private RoomRepository roomRepository;
@@ -21,7 +17,6 @@ public class RoomController {
     public RoomController(RoomRepository roomRepository){
         this.roomRepository=roomRepository;
     }
-
     // create room
     @PostMapping
     public ResponseEntity<?> createRoom(@RequestBody String roomId){
@@ -40,8 +35,6 @@ public class RoomController {
              return ResponseEntity.status(HttpStatus.CREATED).body(room);
         }
     }
-
-
 
     // get room: i mean which room do you want to join
     @GetMapping("/{roomId}")
@@ -77,6 +70,4 @@ public class RoomController {
         return ResponseEntity.ok(paginatedMessages);
 
     }
-
-
 }
