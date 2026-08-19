@@ -23,6 +23,4 @@ public class Message {
         this.content=content;
         this.timeStamp=LocalDateTime.now();
     }
-
-
 }
